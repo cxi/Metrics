@@ -1,0 +1,87 @@
+<html>
+<head></head>
+<body>
+<div id="hhh">
+    <div>
+       
+        <table border="1" style="border-color:black">
+            <thead>
+                <tr>
+                    <td width="200">Metrics Name</td>
+                    <td>Table For metrics on Mtr545</td>                    
+                    <td> SP For metrics on Mtr545</td>
+                    <td> <=1th Level underlying tables/views on 545</td>
+                    
+                    <!--<td style="width:500px"><= 1th Level underlying tables/views on 545</td>
+                    <td width="300">Distinct Servers</td>
+                    <td  style="width:100%">Distinct items per server</td>
+                    <td>  <= SP and 2th level underlyings</td>-->
+                </tr>
+            </thead>
+            <tr>
+                <td rowspan="2">BM_Abs_Unpaid_NonMedical</td>
+                <td rowspan="2">[MTRLPQDC545\CALLCENTER_01,1260].[Agent_Data].SingleSource.t_ShrinkageData_IEX</td>
+                <td rowspan="2">[Agent_Data].SingleSource.t_Deacts_BM  </td>
+                <td rowspan="2">[Agent_Data]</td>
+                <td style="width:100%">SingleSource.t_Deacts_BM  </td>
+                <td>[SingleSource].[USP_Update_t_Deacts_BM]</td>
+            </tr>
+        
+        </table>
+    </div>
+    <div>
+        <div><strong>After Migration</strong></div>
+        <table  border="1" style="border-color:black; width:100%; min-width:2300px">
+            <thead>
+                <tr><td>Database</td><td style="width:15%">objects</td><td style="width:35%">target in Dev</td><td style="width: 100px">Dev status</td><td style="width:35%">target in Prod</td><td  style="width:15%"></td></tr>
+            </thead>
+            <tbody>
+                <tr><td rowspan="6">[MTRLPQDC545\CALLCENTER_01,1260].[Agent_Data]</td><td rowspan="2">t_Deacts_BM</td><td>[brepl1].[Source_Collection].[dbo].[TBL_DEACTS_BM]</td><td>Done</td><td>[brepl1].[SOURCE_DEACTS_NM1].[dbo].[TBL_DEACTS_BM]</td></tr>
+                <tr><td>[brepl1].[Source_Collection].[dbo].[TBL_DEACTS_BM_STG]</td><td>Done</td><td>[brepl1].[SOURCE_DEACTS_NM1].[dbo].[TBL_DEACTS_BM_STG]</td></tr>
+                <tr><td>USP_Update_t_Deacts_BM </td><td>[brepl1].[Source_Collection].[dbo].[USP_Update_t_Deacts_BM]</td><td>Done</td><td>[brepl1].[SOURCE_DEACTS_NM1].[dbo].[USP_Update_t_Deacts_BM]</td></tr>
+                <tr><td rowspan="2">SingleSource.t_CallStats_Exony</td><td>[BREPP2].AGENT_SUITE.dbo.[TBL_AS_SingleSource_t_CallStats_Exony]</td><td>Done</td><td>[BREPP2].KBI_Reports.dbo.TBL_AS_SingleSource_t_CallStats_Exony</td><td rowspan="3">permission denied to create on brepl1.KBI_Reports</td></tr>
+                <tr><td>[BREPP2].AGENT_SUITE.dbo.[TBL_AS_SingleSource_t_CallStats_Exony_STG]</td><td>Done</td><td>[BREPP2].KBI_Reports.dbo.[TBL_AS_SingleSource_t_CallStats_Exony_STG]</td></tr>
+                <tr><td>[SingleSource].[USP_Update_t_CallStats_Exony]</td><td>[BREPP2].AGENT_SUITE.dbo.[USP_AS_IMPORT_SingleSource_t_CallStats_Exony]</td><td>Done</td><td>[BREPP2].KBI_Reports.dbo.[USP_AS_IMPORT_SingleSource_t_CallStats_Exony]</td></tr>
+                <tr><td rowspan="4">[MTRLPQDC545\CALLCENTER_01,1260].[WFM_Reports]</td><td>View_agent_suite_SV_source</td><td>[brepl1].[Source_Collection].[dbo].[View_agent_suite_SV_source]</td><<td>Done</td>/tr>
+                <tr><td rowspan="2">t_SingleView_CodeComplaints</td><td>[brepl1].[Source_Collection].[dbo].[TBL_SingleView_CodeComplaints]</td><td>Done</td></tr>
+                <tr><td>[brepl1].[Source_Collection].[STG].[TBL_SingleView_CodeComplaints]</td><td>Done</td></tr>
+                <tr><td>usp_update_t_SingleView_CodeComplaints</td><td>[brepl1].[Source_Collection].[dbo].[usp_update_t_SingleView_CodeComplaints]</td><td>Done</td></tr>
+                <tr><td rowspan="24">BONUS_SALES</td><td>T_REF_ARPU</td><td>[brepl2].[APACA].[dbo].[View_REF_ARPU] </td><td>Done</td><td>[brepp2].[APACA].[dbo].[View_REF_ARPU] </td></tr>
+                <tr><td>SP_REFRESH_REFERENCE_ARPU</td><td><del>[brepl2].[APACA].[dbo].[View_REF_ARPU]</del></td><td>Done</td><td><del>[brepl2].[APACA].[dbo].[View_REF_ARPU]</del></td></tr>
+                <tr><td>dbo.T_REF_CONVERSION_LISTINGS</td><td>[brepl2].[APACA].[dbo].[VIEW_REF_CONVERSION_LISTINGS]</td><td>Done</td><td>[brepp2].[APACA].[dbo].[VIEW_REF_CONVERSION_LISTINGS]</td></tr>
+                <tr><td>SP_REFRESH_REFERENCE_CONVERSION_LISTING</td><td><del>[brepl2].[APACA].[dbo].[VIEW_REF_CONVERSION_LISTINGS]</del></td><td>Need to confirm the data &lt=2015</td><td><del>[brepp2].[APACA].[dbo].[VIEW_REF_CONVERSION_LISTINGS]</del></td></tr>
+                <!--Clawback-->
+                <tr><td>tblCLAWBACK</td><td>[brepl1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.Tbl_CLAWBACK</td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.Tbl_CLAWBACK</td></tr>
+                <tr><td>SP_ClawbackFeed_Smarter</td><td>[brepl1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.[USP_ClawbackFeed_Smarter] </td><td>Done</td><td>[brepl1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.[USP_ClawbackFeed_Smarter] </td><td rowspan="4">Needs to remove [BREPP1.BELL.CORP.BCE.CA].Source_BRS_Clawback before deployment</td></tr>
+                <tr><td>SP_ClawbackFeed_TOrder</td><td>[brepl1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.[USP_ClawbackFeed_TOrder]</td><td>Done</td><td>[brepl1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.[USP_ClawbackFeed_TOrder]</td></tr>
+                <tr><td>SP_ClawbackFeed_Trio</td><td>[brepl1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.[USP_ClawbackFeed_Trio] </td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.[USP_ClawbackFeed_Trio]</td></tr>
+                <tr><td>SP_ClawbackFeed_WBLocal</td><td>[brepl1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.[USP_ClawbackFeed_WBLocal] </td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.[USP_ClawbackFeed_WBLocal] </td></tr>
+                <!--CLAWBACKS-->
+                <tr><td>T_CLAWBACKS_RAW</td><td>[brepl1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.[TBL_CLAWBACKS_RAW]</td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.[TBL_CLAWBACKS_RAW]</td></tr>
+                <tr><td>V_CLAWBACKS_DETAILS</td><td>[brepl1.belldev.dev.bce.ca].Source_BRS_Clawback.[dbo].[VIEW_CLAWBACKS_DETAILS]</td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].Source_BRS_Clawback.[dbo].[VIEW_CLAWBACKS_DETAILS]</td></tr>
+                <tr><td>V_CLAWBACKS_IO_RATIO</td><td>[brepl1.belldev.dev.bce.ca].Source_BRS_Clawback.dbo .VIEW_CLAWBACKS_IO_RATIO</td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].Source_BRS_Clawback.dbo .VIEW_CLAWBACKS_IO_RATIO</td></tr>
+                <tr><td>V_CLAWBACKS_DETAILS_IO</td><td>[brepl1.belldev.dev.bce.ca].Source_BRS_Clawback.dbo.[VIEW_CLAWBACKS_DETAILS_IO]</td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].Source_BRS_Clawback.dbo.[VIEW_CLAWBACKS_DETAILS_IO]</td></tr>
+                <tr><td>V_CLAWBACKS_RGU_VALUE</td><td>[brepl1.belldev.dev.bce.ca].Source_BRS_Clawback.dbo.VIEW_CLAWBACKS_RGU_VALUE</td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].Source_BRS_Clawback.dbo.VIEW_CLAWBACKS_RGU_VALUE</td></tr>
+                <tr><td>SP_REFRESH_CLAWBACK_DATA</td><td>[brepl1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.[VIEW_CLAWBACKS_RAW]</td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.[VIEW_CLAWBACKS_RAW]</td></tr>
+               <tr><td>V_INSERVICE_DETAILS</td><td>[brepl1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.[VIEW_INSERVICE_DETAILS]</td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].[Source_BRS_Clawback].dbo.[VIEW_INSERVICE_DETAILS]</td></tr>
+                <!--Sales-->
+                <tr><td>dbo.T_SALES_RAW</td><td>[brepl1.belldev.dev.bce.ca].[Source_Smarter].[dbo].[TBL_SALES_RAW]</td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].[Source_Smarter].[dbo].[TBL_SALES_RAW]</td></tr>
+                <tr><td>dbo.T_SALES_RAW_STG</td><td>[brepl1.belldev.dev.bce.ca].[Source_Smarter].[STG].[TBL_SALES_RAW]</td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].[Source_Smarter].[STG].[TBL_SALES_RAW]</td></tr>                
+                <tr><td>V_sales_details</td><td>[brepl1.belldev.dev.bce.ca].[Source_Smarter].[dbo].[VIEW_SALES_DETAILS]</td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].[Source_Smarter].[dbo].[VIEW_SALES_DETAILS]</td></tr>
+                <tr><td>V_sales_IO_ratio</td><td>[brepl1.belldev.dev.bce.ca].[Source_Smarter].[dbo].[VIEW_sales_IO_ratio]</td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].Source_Smarter.[VIEW_sales_IO_ratio]</td></tr>
+                <tr><td>V_sales_details_IO</td><td>[brepl1.belldev.dev.bce.ca].[Source_Smarter].[dbo].[VIEW_SALES_DETAILS_IO] </td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].[Source_Smarter].[dbo].[VIEW_SALES_DETAILS_IO]</td></tr>
+                <tr><td>V_SALES_RGU_VALUE</td><td>[brepl1.belldev.dev.bce.ca].[Source_Smarter].[dbo].[View_SALES_RGU_VALUE]</td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].[Source_Smarter].[dbo].[View_SALES_RGU_VALUE]</td></tr>
+                <tr><td>SP_REFRESH_SALES_DATA</td><td>[brepl1.belldev.dev.bce.ca].[Source_Smarter].[dbo].[USP_REFRESH_SALES_DATA] </td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].[Source_Smarter].[dbo].[USP_REFRESH_SALES_DATA]</td></tr>                
+                 <tr><td>SP_REFRESH_SALES_DATA_SALES_DRIVERS</td><td>[brepl1.belldev.dev.bce.ca].[Source_Smarter].[dbo].[USP_REFRESH_SALES_DATA_SALES_DRIVERS] </td><td>Done</td><td>[brepp1.belldev.dev.bce.ca].[Source_Smarter].[dbo].[USP_REFRESH_SALES_DATA_SALES_DRIVERS]</td></tr>                
+                
+                <tr><td rowspan="5">BREPl2</td><td>[dbo].[USP_AS_IMPORT_BM_DEACTS]</td><td></td><td></td></tr>
+                <tr><td>dbo.[USP_AS_IMPORT_CALL_CODED]</td><td></td><td></td></tr>
+                <tr><td>dbo.[USP_AS_IMPORT_RGU_CLAWBACK]</td><td></td><td></td></tr>
+                <tr><td>dbo.USP_AS_IMPORT_INSERVICE</td><td></td><td></td></tr>
+                <tr><td>dbo.USP_AS_IMPORT_RGU_SALES</td><td></td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+</body>
